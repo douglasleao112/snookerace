@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background: #000;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .logo {
+      width: 150px;
+      max-width: 70%;
+      margin-bottom: 32px;
+      animation: logoFloat 3s ease-in-out infinite;
+    }
+
+    .error-code {
+      font-size: clamp(90px, 28vw, 160px);
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: -6px;
+      color: #fff;
+      text-shadow: 
+        0 0 12px rgba(255,255,255,0.25),
+        0 0 35px rgba(255,255,255,0.12);
+      animation: glitch 1.8s infinite;
+    }
+
+    .title {
+      margin-top: 22px;
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+      animation-delay: 0.4s;
+    }
+
+    .subtitle {
+      margin-top: 12px;
+      font-size: 15px;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.72);
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+      animation-delay: 0.7s;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 28px;
+      padding: 13px 22px;
+      border-radius: 999px;
+      background: #fff;
+      color: #000;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+      animation-delay: 1s;
+    }
+
+    .button:hover {
+      transform: scale(1.04);
+      box-shadow: 0 0 24px rgba(255,255,255,0.25);
+    }
+
+    .balls {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .ball {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      animation: moveBall 8s linear infinite;
+    }
+
+    .ball:nth-child(1) {
+      left: 10%;
+      top: 20%;
+      animation-delay: 0s;
+      animation-duration: 7s;
+    }
+
+    .ball:nth-child(2) {
+      left: 80%;
+      top: 18%;
+      animation-delay: 1s;
+      animation-duration: 9s;
+    }
+
+    .ball:nth-child(3) {
+      left: 20%;
+      top: 80%;
+      animation-delay: 2s;
+      animation-duration: 8s;
+    }
+
+    .ball:nth-child(4) {
+      left: 75%;
+      top: 75%;
+      animation-delay: 0.6s;
+      animation-duration: 10s;
+    }
+
+    .ball:nth-child(5) {
+      left: 50%;
+      top: 10%;
+      animation-delay: 1.5s;
+      animation-duration: 11s;
+    }
+
+    @keyframes logoFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    @keyframes glitch {
+      0% {
+        transform: translate(0);
+      }
+      20% {
+        transform: translate(-2px, 2px);
+      }
+      40% {
+        transform: translate(2px, -2px);
+      }
+      60% {
+        transform: translate(-1px, 1px);
+      }
+      80% {
+        transform: translate(1px, -1px);
+      }
+      100% {
+        transform: translate(0);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes moveBall {
+      0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.15;
+      }
+      25% {
+        transform: translate(30px, -40px) scale(1.15);
+        opacity: 0.35;
+      }
+      50% {
+        transform: translate(-20px, 30px) scale(0.9);
+        opacity: 0.2;
+      }
+      75% {
+        transform: translate(40px, 20px) scale(1.1);
+        opacity: 0.3;
+      }
+      100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.15;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        width: 130px;
+        margin-bottom: 28px;
+      }
+
+      .title {
+        font-size: 20px;
+      }
+
+      .subtitle {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="balls">
+    <span class="ball"></span>
+    <span class="ball"></span>
+    <span class="ball"></span>
+    <span class="ball"></span>
+    <span class="ball"></span>
+  </div>
+
+  <main class="container">
+    <img 
+      class="logo" 
+      src="https://i.imgur.com/KfDoGwu.png" 
+      alt="Snooker Ace"
+    />
+
+    <div class="error-code">404</div>
+
+    <h1 class="title">Essa jogada saiu da mesa</h1>
+
+    <p class="subtitle">
+      A página que você tentou acessar não existe ou foi removida.
+    </p>
+
+    <a class="button" href="/">
+      Voltar para o início
+    </a>
+  </main>
+</body>
+</html>
