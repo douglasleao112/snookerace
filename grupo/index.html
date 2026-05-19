@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title></title>
+  <title>Snooker Ace</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+
+  
   <!-- Meta Pixel Code  -->
   <script>
     !function(f,b,e,v,n,t,s)
@@ -29,123 +34,270 @@ fbq('track', 'CustomizeProduct');
     src="https://www.facebook.com/tr?id=26934123806183488&ev=SubmitApplication&noscript=1"/>
   </noscript>
 
+
+
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    html, body {
-      width: 100%;
-      height: 100%;
-      background: #000;
-      font-family: Arial, Helvetica, sans-serif;
-      overflow: hidden;
+    body{
+      width:100%;
+      height:100vh;
+      overflow:hidden;
+      background:#000;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family:'Inter',sans-serif;
+      color:white;
+      position:relative;
     }
 
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      color: #fff;
+    body::before{
+      content:"";
+      position:absolute;
+      inset:0;
+
+      background:
+      radial-gradient(
+        circle at center,
+        rgba(255,255,255,0.035) 0%,
+        rgba(255,255,255,0) 60%
+      );
+
+      pointer-events:none;
     }
 
-    .container {
-      width: 100%;
-      max-width: 360px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .wrapper{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:34px;
+
+      animation:fadeIn 1.5s ease;
+
+      position:relative;
+      z-index:2;
     }
 
-    .logo {
-      width: 130px;
-      max-width: 70%;
-      margin-bottom: 36px;
-      animation: fadeIn 1s ease forwards;
+    .logo{
+      width:150px;
+
+      opacity:0;
+      transform:translateY(10px) scale(.96);
+
+      animation:logoReveal 1.5s ease forwards;
+
+      filter:
+      drop-shadow(0 10px 30px rgba(255,255,255,0.06));
     }
 
-    .loading-box {
-      width: 100%;
-      height: 4px;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 999px;
-      overflow: hidden;
-      margin-bottom: 22px;
+    .progress-container{
+      width:300px;
+      height:2px;
+
+      background:rgba(255,255,255,0.12);
+
+      position:relative;
+      overflow:hidden;
+
+      border-radius:999px;
     }
 
-    .loading-bar {
-      width: 0%;
-      height: 100%;
-      background: #fff;
-      border-radius: 999px;
-      animation: loading 5s linear forwards;
+    .progress-bar{
+      position:absolute;
+      left:0;
+      top:0;
+
+      width:0%;
+      height:100%;
+
+      border-radius:999px;
+
+      background:
+      linear-gradient(
+      90deg,
+      rgba(255,255,255,0.35),
+      rgba(255,255,255,1),
+      rgba(255,255,255,0.45));
+
+      animation:
+      loading 7s cubic-bezier(.65,.05,.36,1) forwards;
     }
 
-    .text {
-      font-size: 16px;
-      line-height: 1.45;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.88);
-      opacity: 0;
-      transform: translateY(10px);
-      animation: textAppear 1s ease forwards;
-      animation-delay: 0.4s;
+    .text{
+      max-width:520px;
+
+      text-align:center;
+      line-height:1.7;
+
+      font-size:17px;
+      font-weight:300;
+
+      color:rgba(255,255,255,0.88);
+
+      letter-spacing:-0.02em;
+
+      opacity:0;
+      transform:translateY(10px);
+
+      animation:textReveal 1.2s ease forwards;
+      animation-delay:.8s;
     }
 
-    @keyframes loading {
-      from {
-        width: 0%;
+    .small{
+      font-size:11px;
+
+      letter-spacing:0.34em;
+      text-transform:uppercase;
+
+      color:rgba(255,255,255,0.38);
+
+      margin-bottom:14px;
+
+      font-weight:500;
+    }
+
+    .highlight{
+      color:#ffffff;
+      font-weight:500;
+    }
+
+    @keyframes loading{
+
+      0%{
+        width:0%;
       }
-      to {
-        width: 100%;
+
+      15%{
+        width:12%;
       }
+
+      35%{
+        width:34%;
+      }
+
+      55%{
+        width:58%;
+      }
+
+      75%{
+        width:79%;
+      }
+
+      90%{
+        width:93%;
+      }
+
+      100%{
+        width:100%;
+      }
+
     }
 
-    @keyframes textAppear {
-      to {
-        opacity: 1;
-        transform: translateY(0);
+    @keyframes logoReveal{
+
+      to{
+        opacity:1;
+        transform:translateY(0) scale(1);
       }
+
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: scale(0.96);
+    @keyframes textReveal{
+
+      to{
+        opacity:1;
+        transform:translateY(0);
       }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
+
     }
+
+    @keyframes fadeIn{
+
+      from{
+        opacity:0;
+      }
+
+      to{
+        opacity:1;
+      }
+
+    }
+
+    @media(max-width:768px){
+
+      .logo{
+        width:120px;
+      }
+
+      .progress-container{
+        width:240px;
+      }
+
+      .text{
+        font-size:14px;
+        padding:0 28px;
+      }
+
+    }
+
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <img 
-      class="logo" 
-      src="https://i.imgur.com/KfDoGwu.png" 
-      alt="Snooker Ace"
-    />
 
-    <div class="loading-box">
-      <div class="loading-bar"></div>
+  <div class="wrapper">
+
+    <img
+      class="logo"
+      src="https://custodiogrupo.com/wp-content/uploads/2026/05/app-logo-big.png"
+      alt="Snooker Ace"
+    >
+
+    <div class="progress-container">
+      <div class="progress-bar"></div>
     </div>
 
     <div class="text">
-      Seja o primeiro a jogar o melhor jogo de sinuca apostado entre jogadores reais.
+
+      <div class="small">
+        grupo exclusivo de pré lançamento
+      </div>
+
+      Entre no beta do <span class="highlight">Snooker Ace</span>.<br>
+      Sinuca online contra jogadores reais.<br>
+      <span class="highlight">Jogue valendo.</span>
+
     </div>
+
   </div>
 
   <script>
-    setTimeout(function() {
-      window.location.href = "https://chat.whatsapp.com/Hfp0zUN8mH3G66kkWhCCiX";
-    }, 3500);
+
+    setTimeout(() => {
+
+      document.body.style.transition =
+      "opacity 1s ease";
+
+      document.body.style.opacity = "0";
+
+      setTimeout(() => {
+
+        window.location.href =
+        "https://chat.whatsapp.com/Hfp0zUN8mH3G66kkWhCCiX";
+
+      }, 1000);
+
+    }, 7500);
+
   </script>
+
 </body>
 </html>
